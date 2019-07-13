@@ -1,0 +1,20 @@
+{
+  "name": "project_visualization_d3",
+  "version": "1.0.0",
+  "description": "\"Project Visualization with D3\"",
+  "main": "index.js",
+  "type": "git",
+  "url": "https://github.com/xexiu/Visualization_Data_D3.git",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "d3",
+    "data"
+  ],
+  "author": "Sergio M.",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^5.9.7"
+  }
+}
