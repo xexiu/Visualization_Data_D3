@@ -1,0 +1,15 @@
+.d3__metrics {
+    padding: 10px;
+}
+
+.d3__metrics .d3-svg {
+    padding: 20px;
+}
+
+.d3__metrics div[class^="d3__wrapper"] {
+    display: inline-block;
+    position: relative;
+    border-bottom: 3px solid #e4e4e4;
+    margin-right: 50px;
+    padding-bottom: 20px;
+}

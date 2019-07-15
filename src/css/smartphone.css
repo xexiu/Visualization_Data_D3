@@ -1,0 +1,53 @@
+.d3__metrics .d3__smartphone--revenue {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    color: #436223;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__metrics .d3__smartphone--impressions {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    color: #334e5e;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__metrics .d3__smartphone--visits {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    color: #af5e2c;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__smartphone--revenue:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__smartphone--impressions:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__smartphone--visits:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__smartphone--percent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: Comic sans-serif;
+}
+
+.d3__smartphone--value {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    color: #ccc;
+    font-family: Comic sans-serif;
+}

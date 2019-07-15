@@ -1,6 +1,7 @@
 /* eslint-disable padding-line-between-statements */
-export function buildDomElement(element, className) {
+export function buildDomElement(element, className, text) {
 	return Object.assign(document.createElement(element), {
-		className
+		className,
+		innerText: text || ''
 	});
 }

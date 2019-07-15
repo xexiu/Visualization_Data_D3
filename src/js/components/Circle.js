@@ -1,25 +1,58 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable padding-line-between-statements */
-import '../../css/circles.css';
-import Circles from '../adapters/CirclesAdapter';
+import * as d3 from 'd3';
+import '../../css/circle.css';
+import {
+	buildSVG,
+	buildArc,
+	buildPie,
+	interpolateAngles
+} from '../utils/d3Utils';
 
-export default class Circle extends Circles {
-	constructor() {
-		super(document.querySelector('.d3'));
+const WIDTH = 250;
+const HEIGHT = 250;
+const INNER_RADIUS = 110;
+const OUTER_RADIUS = 117;
+const HALF_SECOND = 500;
+
+export default class Circle {
+	constructor(model) {
+		this.model = model;
 	}
-	drawCirclesInfo(data) {
-		super.drawCirclesInfo(data);
+	drawCircle(data, index) {
+		const {
+			getMetricName,
+			getMetricColor,
+			getDevicesValues,
+			getDevicesTotalValue
+		} = this.model;
 
-		const values = Object.values(data[1]);
-		const tatalValue = values[0] + values[1];
+		const canvas = buildSVG(`.d3__wrapper${index}`, WIDTH, HEIGHT);
+		const arc = buildArc(INNER_RADIUS, OUTER_RADIUS);
+		const pie = buildPie();
+		const color = d3.scaleOrdinal().range(getMetricColor(data[1]));
+		const group = canvas.append('g').attr('transform', 'translate(125,125)');
+		const arcs = group.selectAll('.arc')
+            .data(pie(getDevicesValues(data[1])))
+            .enter()
+            .append('g')
+			.attr('class', 'arc');
 
-		this.arcs.append('text')
-        .style('text-anchor', 'middle')
-        .style('fill', '#b9b9b9')
-        .text(data[0].toUpperCase());
+		arcs.append('path')
+			.attr('d', arc)
+			.attr('fill', d => color(d.value))
+			.transition()
+			.duration(HALF_SECOND)
+			.attrTween('d', d => interpolateAngles(arc, d));
 
-		this.arcs.append('text')
-        .style('text-anchor', 'middle')
-        .attr('dy', '1em')
-        .text(new Intl.NumberFormat().format(tatalValue));
+		arcs.append('text')
+			.style('text-anchor', 'middle')
+			.style('fill', '#b9b9b9')
+			.text(getMetricName(data[0]).toUpperCase());
+
+		arcs.append('text')
+			.style('text-anchor', 'middle')
+			.attr('dy', '1em')
+			.text(new Intl.NumberFormat().format(getDevicesTotalValue(data[1])));
 	}
 }

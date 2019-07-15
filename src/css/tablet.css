@@ -1,0 +1,53 @@
+.d3__metrics .d3__tablet--revenue {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    color: #99d15a;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__metrics .d3__tablet--impressions {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    color: #d0eef7;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__metrics .d3__tablet--visits {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    color: #ecc54d;
+    font-weight: bold;
+    font-family: Comic sans-serif;
+}
+
+.d3__tablet--revenue:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__tablet--impressions:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__tablet--visits:first-letter {
+    text-transform: uppercase;
+}
+
+.d3__tablet--percent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-family: Comic sans-serif;
+}
+
+.d3__tablet--value {
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    color: #ccc;
+    font-family: Comic sans-serif;
+}
