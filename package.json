@@ -6,7 +6,6 @@
   "type": "git",
   "url": "https://github.com/xexiu/Visualization_Data_D3.git",
   "scripts": {
-    "test": "babel-node spec/run.js",
     "dev": "webpack --mode development ./src/js/index.js --output ./dist/main.js",
     "build": "webpack --mode production ./src/js/index.js --output ./dist/main.js",
     "watch": "webpack --watch --mode development ./src/js/index.js --output ./dist/main.js"
