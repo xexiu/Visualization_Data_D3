@@ -1,4 +1,4 @@
-Status](https://travis-ci.org/xexiu/Visualization_Data_D3.svg?branch=master)](https://travis-ci.org/xexiu/Visualization_Data_D3)
+[![Build Status]https://travis-ci.org/xexiu/Visualization_Data_D3.svg?branch=master)](https://travis-ci.org/xexiu/Visualization_Data_D3)
 
 - Getting data from a json file coming from server/backend/API w/e
 - Drawing the data captured with D3.js into an HTML file
