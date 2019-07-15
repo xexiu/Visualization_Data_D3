@@ -8,6 +8,6 @@
 ```sh
 npm install
 ```
-- Check it from your localhost:
+- Run `http-server` then check it from your localhost:
 - `http://localhost:8080` or
-- `http://127.0.0.1:8080/` after running `http-server`
+- `http://127.0.0.1:8080/`
