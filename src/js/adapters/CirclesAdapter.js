@@ -21,7 +21,7 @@ export default class Circles {
 			container.appendChild(circles);
 		}
 	}
-	drawCircle(data) {
+	drawCirclesInfo(data) {
 		const values = Object.values(data[1]);
 		const canvas = buildSVG('.d3__circles', WIDTH, HEIGHT);
 		const arc = buildArc(INNER_RADIUS, OUTER_RADIUS);
@@ -31,6 +31,8 @@ export default class Circles {
 		const pie = d3.pie()
             .sort(shortValuesD3)
 			.value(d => d);
+		canvas.attr('class', 'd3__circle');
+
 		this.arcs = group.selectAll('.arc')
             .data(pie(values))
             .enter()

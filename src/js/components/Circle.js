@@ -1,13 +1,13 @@
 /* eslint-disable padding-line-between-statements */
 import '../../css/circles.css';
-import Circles from '../adapters/Circles';
+import Circles from '../adapters/CirclesAdapter';
 
 export default class Circle extends Circles {
 	constructor() {
 		super(document.querySelector('.d3'));
 	}
-	drawCircle(data) {
-		super.drawCircle(data);
+	drawCirclesInfo(data) {
+		super.drawCirclesInfo(data);
 
 		const values = Object.values(data[1]);
 		const tatalValue = values[0] + values[1];

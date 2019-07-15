@@ -20,8 +20,8 @@ export default class Dashboard {
 		// circle
 		if (dataModel) {
 			Object.entries(dataModel).forEach(data => {
-				this.circle.drawCircle(data);
-				this.device.drawDevice(data);
+				this.circle.drawCirclesInfo(data);
+				this.device.drawDevicesInfo(data);
 			});
 		}
 	}
