@@ -4,5 +4,7 @@ export function sum(a, b) {
 }
 
 export function getPercentatge(deviceValue, devicesTotalValue) {
-	return (deviceValue * 100) / devicesTotalValue;
+	const num = (deviceValue * 100) / devicesTotalValue;
+
+	return num.toFixed();
 }

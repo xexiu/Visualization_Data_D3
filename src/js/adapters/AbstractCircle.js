@@ -1,7 +1,6 @@
-/* eslint-disable class-methods-use-this */
 /* eslint-disable padding-line-between-statements */
+
 import * as d3 from 'd3';
-import '../../css/circle.css';
 import {
 	buildSVG,
 	buildArc,
@@ -15,27 +14,17 @@ const INNER_RADIUS = 110;
 const OUTER_RADIUS = 117;
 const HALF_SECOND = 500;
 
-export default class Circle {
-	constructor(model) {
-		this.model = model;
-	}
-	drawCircle(data, index) {
-		const {
-			getMetricName,
-			getMetricColor,
-			getDevicesValues,
-			getDevicesTotalValue
-		} = this.model;
-
-		const canvas = buildSVG(`.d3__wrapper${index}`, WIDTH, HEIGHT);
+export default class AbstractCircle {
+	drawCircles({ metricName, metricColor, devicesValues, devicesTotalValue }) {
+		const canvas = buildSVG(`.d3__wrapper--${metricName}`, WIDTH, HEIGHT);
 		const arc = buildArc(INNER_RADIUS, OUTER_RADIUS);
 		const pie = buildPie();
-		const color = d3.scaleOrdinal().range(getMetricColor(data[1]));
+		const color = d3.scaleOrdinal().range(metricColor);
 		const group = canvas.append('g').attr('transform', 'translate(125,125)');
 		const arcs = group.selectAll('.arc')
-            .data(pie(getDevicesValues(data[1])))
-            .enter()
-            .append('g')
+			.data(pie(devicesValues))
+			.enter()
+			.append('g')
 			.attr('class', 'arc');
 
 		arcs.append('path')
@@ -48,11 +37,11 @@ export default class Circle {
 		arcs.append('text')
 			.style('text-anchor', 'middle')
 			.style('fill', '#b9b9b9')
-			.text(getMetricName(data[0]).toUpperCase());
+			.text(metricName.toUpperCase());
 
 		arcs.append('text')
 			.style('text-anchor', 'middle')
 			.attr('dy', '1em')
-			.text(new Intl.NumberFormat().format(getDevicesTotalValue(data[1])));
+			.text(new Intl.NumberFormat().format(devicesTotalValue));
 	}
 }

@@ -8,8 +8,15 @@
   "scripts": {
     "dev": "webpack --mode development ./src/js/index.js --output ./dist/main.js",
     "build": "webpack --mode production ./src/js/index.js --output ./dist/main.js",
-    "watch": "webpack --watch --mode development ./src/js/index.js --output ./dist/main.js"
+    "watch": "webpack --watch --mode development ./src/js/index.js --output ./dist/main.js",
+    "test": "bundlesize"
   },
+  "bundlesize": [
+    {
+      "path": "./dist/*.js",
+      "maxSize": "90 kB"
+    }
+  ],
   "keywords": [
     "d3",
     "data"

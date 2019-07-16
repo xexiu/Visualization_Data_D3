@@ -1,35 +1,49 @@
 /* eslint-disable padding-line-between-statements */
 
 import '../css/dashboard.css';
-import ShapesAdapter from './adapters/ShapesAdapter';
-import DevicesAdapter from '../js/adapters/DevicesAdapter';
+import Circles from '../js/components/Circles';
+import Devices from '../js/components/Devices';
 import DataModel from '../js/model/DataModel';
 import { buildDomElement } from '../js/utils/DOMVirtual';
 
-function buildWrapper(index) {
+function buildWrapper({ metricName }) {
 	const container = document.querySelector('.d3__metrics');
-	const wrapper = buildDomElement('div', `d3__wrapper${index}`);
+	const wrapper = buildDomElement('div', `d3__wrapper--${metricName}`);
 	container.appendChild(wrapper);
 }
 
 export default class Dashboard {
 	constructor() {
 		this.model = new DataModel();
-		this.shapesAdapter = new ShapesAdapter(this.model);
-		this.deviceAdapter = new DevicesAdapter(this.model);
-		this.wrapper = buildWrapper;
+		this.circles = new Circles();
+		this.devices = new Devices();
 	}
 
 	init() {
 		this.createChildren(this.model);
 	}
 
-	createChildren(model) {
-		Object.entries(model.getData()).forEach((data, index) => {
-			this.wrapper(index);
+	createChildren() {
+		Array.from(this.model.getData()).forEach((data) => {
+			const {
+				getMetricName,
+				getMetricColor,
+				getDevicesValues,
+				getDevicesTotalValue,
+				getDevices
+			} = this.model;
+			const objToDraw = {
+				metricName: getMetricName(data),
+				metricColor: getMetricColor(data),
+				devicesValues: getDevicesValues(data),
+				devicesTotalValue: getDevicesTotalValue(data),
+				devices: getDevices(data)
+			};
 
-			this.shapesAdapter.drawShapes(data, index);
-			this.deviceAdapter.drawDevices(data, index);
+			buildWrapper(objToDraw);
+
+			this.circles.drawCircles(objToDraw);
+			this.devices.drawDevices(objToDraw);
 		});
 	}
 }

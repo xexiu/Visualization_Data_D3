@@ -1,9 +1,16 @@
 /* eslint-disable padding-line-between-statements */
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	module: {
+		entry: { main: './src/js/index.js' },
+		output: {
+			path: path.resolve(__dirname, 'dist'),
+			filename: '[name].[chunkhash].js'
+		},
+		target: 'node',
 		rules: [
 			{
 				test: /\.js$/,
@@ -23,7 +30,8 @@ module.exports = {
 			},
 			{
 				test: /\.(css|sass|scss)$/,
-				loader: [
+				use: [
+					'style-loader',
 					MiniCssExtractPlugin.loader,
 					'css-loader',
 					'sass-loader'
@@ -33,6 +41,8 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
+			inject: false,
+			hash: true,
 			template: './src/index.html',
 			filename: '../index.html'
 		}),
