@@ -11,3 +11,8 @@ npm install
 - Run `http-server` then check it from your localhost:
 - `http://localhost:8080` or
 - `http://127.0.0.1:8080/`
+
+### GIF's / Screenshots
+
+
+![](https://i.gyazo.com/4027185f6d9310a393681e90727f6137.gif)
