@@ -1,6 +1,6 @@
 /* eslint-disable padding-line-between-statements */
 
-import * as d3 from 'd3';
+import { scaleOrdinal } from 'd3';
 import {
 	buildSVG,
 	buildArc,
@@ -19,7 +19,7 @@ export default class AbstractCircle {
 		const canvas = buildSVG(`.d3__wrapper--${metricName}`, WIDTH, HEIGHT);
 		const arc = buildArc(INNER_RADIUS, OUTER_RADIUS);
 		const pie = buildPie();
-		const color = d3.scaleOrdinal().range(metricColor);
+		const color = scaleOrdinal().range(metricColor);
 		const group = canvas.append('g').attr('transform', 'translate(125,125)');
 		const arcs = group.selectAll('.arc')
 			.data(pie(devicesValues))

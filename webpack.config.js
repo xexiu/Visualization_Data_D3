@@ -1,6 +1,7 @@
 /* eslint-disable padding-line-between-statements */
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	module: {
@@ -29,6 +30,12 @@ module.exports = {
 				]
 			}
 		]
+	},
+	optimization: {
+		minimize: true,
+		minimizer: [new UglifyJsPlugin({
+			include: /\.min\.js$/
+		})]
 	},
 	plugins: [
 		new HtmlWebPackPlugin({
